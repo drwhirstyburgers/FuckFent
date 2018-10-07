@@ -17,7 +17,7 @@
  @import "bootstrap";
 
 body {
-  background: url("background.jpg") no-repeat center center fixed;
+  background-image: url("background.jpg");
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
