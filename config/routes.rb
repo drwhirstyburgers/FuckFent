@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  get 'donations/donations'
+  resources :donations, only: [:new, :create]
 
   get 'welcome/about'
 
