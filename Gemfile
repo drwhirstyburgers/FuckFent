@@ -49,3 +49,4 @@ end
 gem 'bootstrap-sass'
 gem 'stripe'
 gem 'figaro'
+gem 'bcrypt'
