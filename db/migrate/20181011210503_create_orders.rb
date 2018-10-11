@@ -6,6 +6,7 @@ class CreateOrders < ActiveRecord::Migration[5.1]
       t.string :order_type
       t.string :address
       t.text :notes
+      t.boolean :complete
 
       t.timestamps
     end

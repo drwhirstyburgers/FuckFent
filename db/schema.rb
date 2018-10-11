@@ -25,6 +25,7 @@ ActiveRecord::Schema.define(version: 20181011210503) do
     t.string "order_type"
     t.string "address"
     t.text "notes"
+    t.boolean "complete"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
