@@ -31,6 +31,9 @@
     <div class="footer">
       <div id="admin-link">
         <%= link_to "Admin", new_session_path %>
+        <% if current_admin %>
+          | <%= link_to "Sign Out", session_path(current_admin), method: :delete %>
+        <% end %>
       </div>
     </div>
 
