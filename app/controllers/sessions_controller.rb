@@ -5,9 +5,9 @@ class SessionsController < ApplicationController
   def create
     admin = Admin.find_by(name: params[:session][:name])
 
-    if admin && admin.authenticate(params[:session][:password_digest])
-      flash[:notice] = "Welcome, #{admin.name}!"
+    if admin && admin.authenticate(params[:session][:password])
       create_session(admin)
+      flash[:notice] = "Welcome, #{admin.name}!"
       redirect_to root_path
     else
       flash.now[:alert] = 'Invalid email/password combination'
@@ -17,7 +17,7 @@ class SessionsController < ApplicationController
 
   def destroy
     destroy_session(current_admin)
-    flash[:notice] = "You've been signed out, come back soon!"
+    flash[:notice] = "You've been signed out"
     redirect_to root_path
   end
 end
