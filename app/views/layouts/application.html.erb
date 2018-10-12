@@ -33,9 +33,22 @@
         <%= link_to "Admin", new_session_path %>
         <% if current_admin %>
           | <%= link_to "Sign Out", session_path(current_admin), method: :delete %>
+          | <%= link_to "Pledges", pledges_path %>
         <% end %>
       </div>
     </div>
+
+    <% if flash[:notice] %>
+       <div class="alert alert-success">
+         <button type="button" class="close" data-dismiss="alert">&times;</button>
+         <%= flash[:notice] %>
+       </div>
+     <% elsif flash[:alert] %>
+       <div class="alert alert-warning">
+         <button type="button" class="close" data-dismiss="alert">&times;</button>
+         <%= flash[:alert] %>
+       </div>
+     <% end %>
 
     <div class="container">
       <%= yield %>
