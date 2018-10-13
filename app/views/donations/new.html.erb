@@ -5,5 +5,5 @@
      <script class='stripe-button' src="https://checkout.stripe.com/checkout.js" data-key="<%= @stripe_btn_data[:key] %>" data-amount="<%= @stripe_btn_data[:amount] %>" data-description="<%= @stripe_btn_data[:description] %>" ></script>
    <% end %></br>
    <p>If you would prefer to use another payment method such as Paypal, Square, or Bitcoin,
-     or if you have an inquiry please click <%= link_to "here", new_pledge_path %></p>
+     or if you have an inquiry please click <%= link_to "here", new_pledge_path, class: 'btn btn-primary' %></p>
 </div>
