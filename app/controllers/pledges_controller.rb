@@ -25,12 +25,17 @@ class PledgesController < ApplicationController
     @pledge = Pledge.find(params[:id])
   end
 
-  def update
-  end
+  def destroy
+    @pledge = Pledge.find(params[:id])
 
-  def delete
+    if @pledge.destroy
+      flash[:notice] = "\"#{@pledge.name}\" was deleted successfully."
+      redirect_to pledges_path
+    else
+      flash.now[:alert] = "There was an error deleting the post."
+      render :show
+    end
   end
-
   private
 
   def pledge_params
