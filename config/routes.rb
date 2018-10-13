@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
-  resources :pledges
-
-  resources :admins
+  resources :pledges, only: [:index, :new, :create, :show, :destroy]
 
   resources :donations, only: [:new, :create]
 
