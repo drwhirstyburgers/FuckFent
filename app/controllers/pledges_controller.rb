@@ -11,9 +11,9 @@ class PledgesController < ApplicationController
   def create
     @pledge = Pledge.new(pledge_params)
 
-    if @pledge.save?
+    if @pledge.save
       flash[:notice] = "Thank you for your interest! We will return your inquiry within 24 hours"
-      redirect_to action: welcome_welcome_path
+      redirect_to welcome_welcome_path
     else
       flash.now[:alert] = "There was an error, please try again."
       render :new
@@ -34,6 +34,6 @@ class PledgesController < ApplicationController
   private
 
   def pledge_params
-    params.require(:pledge).permit(:name, :email, )
+    params.require(:pledge).permit(:name, :email, :notes, :payment_type, :complete)
   end
 end
