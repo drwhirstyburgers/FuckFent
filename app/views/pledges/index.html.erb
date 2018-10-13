@@ -1,4 +1,10 @@
 <div class="contain">
+  <% if @pledges.count == 0 %>
+    <h3>There are currently no pledges!</h3>
+    <small>
+      Check back soon!
+    </small>
+  <% end %>
   <div class="row">
      <div class="col-md-8">
         <% @pledges.each do |pledge| %>
