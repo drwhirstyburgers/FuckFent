@@ -22,7 +22,7 @@ class PledgesController < ApplicationController
 
 
   def show
-    @pledge = Pledge.find(params[:pledge_id])
+    @pledge = Pledge.find(params[:id])
   end
 
   def update
