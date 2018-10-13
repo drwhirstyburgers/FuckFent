@@ -34,6 +34,6 @@ class PledgesController < ApplicationController
   private
 
   def pledge_params
-    params.require(:pledge).permit(:name, :email, :notes, :payment_type, :complete)
+    params.require(:pledge).permit(:name, :email, :notes, :payment_type, :amount, :complete)
   end
 end

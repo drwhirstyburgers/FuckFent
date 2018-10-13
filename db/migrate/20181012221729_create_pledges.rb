@@ -6,6 +6,7 @@ class CreatePledges < ActiveRecord::Migration[5.1]
       t.integer :payment_type
       t.text :notes
       t.boolean :complete
+      t.string :amount
 
       t.timestamps
     end

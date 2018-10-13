@@ -22,7 +22,7 @@ ActiveRecord::Schema.define(version: 20181012221729) do
   create_table "orders", force: :cascade do |t|
     t.string "name"
     t.string "email"
-    t.string "order_type"
+    t.integer "order_type"
     t.string "address"
     t.text "notes"
     t.boolean "complete"
@@ -36,6 +36,7 @@ ActiveRecord::Schema.define(version: 20181012221729) do
     t.integer "payment_type"
     t.text "notes"
     t.boolean "complete"
+    t.string "amount"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
