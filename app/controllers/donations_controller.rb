@@ -1,16 +1,18 @@
 class DonationsController < ApplicationController
 
   def new
-    @amount = 10_00
+    @amount = Amount.new
     @stripe_btn_data = {
       key: "#{ Rails.configuration.stripe[:publishable_key] }",
-      description: "$10 Donation",
+      description: "$#{@amount} Pledge",
       amount: @amount
     }
   end
 
   def create
-    @amount = 10_00
+    @amount = Amount.new(amount_params)
+
+    @amount.save
     # Creates a Stripe Customer object, for associating
     # with the charge
     customer = Stripe::Customer.create(
@@ -21,7 +23,7 @@ class DonationsController < ApplicationController
     charge = Stripe::Charge.create(
       customer: customer.id, # Note -- this is NOT the user_id in your app
       amount: @amount,
-      description: "$10 Donation",
+      description: "#{@amount} Donation",
       currency: 'usd'
     )
 
@@ -34,5 +36,9 @@ class DonationsController < ApplicationController
     rescue Stripe::CardError => e
       flash[:alert] = e.message
       redirect_to new_donation_path
+  end
+  private
+  def amount_params
+    params.require(:amounts).permit(:amount)
   end
 end
