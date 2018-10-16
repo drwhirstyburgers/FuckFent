@@ -1,9 +1,64 @@
 <div class="contain">
   <h1>Pledge Today!</h1>
   <%= form_tag donations_path do %>
-     <h4>Pledge $10 Now!</h4>
-     <script class='stripe-button' src="https://checkout.stripe.com/checkout.js" data-key="<%= @stripe_btn_data[:key] %>" data-amount="<%= @stripe_btn_data[:amount] %>" data-description="<%= @stripe_btn_data[:description] %>" ></script>
-   <% end %></br>
-   <p>If you would prefer to use another payment method such as Paypal, Square, or Bitcoin,
-     or if you have an inquiry please click <%= link_to "here", new_pledge_path, class: 'btn btn-primary' %></p>
+    <div id="error_explanation">
+      <% if flash[:error].present? %>
+        <p><%= flash[:error] %></p>
+      <% end %>
+    </div>
+    <article>
+      <%= label_tag(:amount, 'Pledge Amount:') %>
+      <div id="textfield"><%= text_field_tag(:amount) %></div></br>
+    </article>
+    <article>
+      <%= hidden_field_tag(:stripeToken) %>
+    </article>
+    <button class="btn btn-primary" id='donateButton'>Pledge</button>
+  <% end %>
+  <p>If you would prefer to use another payment method such as Paypal, Square, or Bitcoin,
+   or if you have an inquiry please click <%= link_to "here", new_pledge_path, class: 'btn btn-primary' %></p>
 </div>
+
+<script src="https://checkout.stripe.com/checkout.js"></script>
+
+<script>
+var handler = StripeCheckout.configure({
+  key: '<%= Rails.configuration.stripe[:publishable_key] %>',
+  locale: 'auto',
+  name: 'FuckFent',
+  description: 'One-time pledge',
+  token: function(token) {
+    $('input#stripeToken').val(token.id);
+    $('form').submit();
+  }
+});
+
+$('#donateButton').on('click', function(e) {
+  e.preventDefault();
+
+  $('#error_explanation').html('');
+
+  var amount = $('input#amount').val();
+  amount = amount.replace(/\$/g, '').replace(/\,/g, '')
+
+  amount = parseFloat(amount);
+
+  if (isNaN(amount)) {
+    $('#error_explanation').html('<p>Please enter a valid amount in USD ($).</p>');
+  }
+  else if (amount < 5.00) {
+    $('#error_explanation').html('<p>Donation amount must be at least $5.</p>');
+  }
+  else {
+    amount = amount * 100; // Needs to be an integer!
+    handler.open({
+      amount: Math.round(amount)
+    })
+  }
+});
+
+$(window).on('popstate', function() {
+  handler.close();
+});
+
+</script>
