@@ -35,6 +35,11 @@
           | <%= link_to "Sign Out", session_path(current_admin), method: :delete %>
           | <%= link_to "Pledges", pledges_path %>
         <% end %>
+        <div id="social-links" class="pull-right">
+          <%= link_to "https://twitter.com/FentFuck" do %>
+            <i class="fab fa-twitter-square fa-lg"></i>
+          <% end %>
+        </div>
       </div>
     </div>
 
