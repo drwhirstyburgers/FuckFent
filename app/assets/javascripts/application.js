@@ -15,4 +15,5 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require bootstrap
+//= require google_analytics.js.coffee
 //= require_tree .
