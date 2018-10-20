@@ -14,7 +14,8 @@
         ga('create', 'UA-127735979-1', 'auto');
       </script>
     <% end %>
-
+    
+    <script src="https://checkout.stripe.com/checkout.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
@@ -33,7 +34,7 @@
           <ul class="nav navbar-nav">
             <li><%= link_to "Home", welcome_welcome_path  %></li>
             <li><%= link_to "About", welcome_about_path  %></li>
-            <li><%= link_to "Pledge", new_donation_path  %></li>
+            <li><%= link_to "Pledge", new_donation_path %></li>
           </ul>
         </div>
       </div>

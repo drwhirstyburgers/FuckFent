@@ -28,10 +28,9 @@
   <p>If you would prefer to use another payment method such as Paypal, Square, or Bitcoin,
    or if you have an inquiry please click <%= link_to "here", new_pledge_path, class: 'btn btn-primary' %></p>
 </div>
-
 <script src="https://checkout.stripe.com/checkout.js"></script>
-
 <script>
+
 var handler = StripeCheckout.configure({
   key: '<%= Rails.configuration.stripe[:publishable_key] %>',
   locale: 'auto',
@@ -57,7 +56,7 @@ $('#donateButton').on('click', function(e) {
     $('#error_explanation').html('<p>Please enter a valid amount in USD ($).</p>');
   }
   else if (amount < 5.00) {
-    $('#error_explanation').html('<p>Donation amount must be at least $5.</p>');
+    $('#error_explanation').html('<p>Pledge amount must be at least $5.</p>');
   }
   else {
     amount = amount * 100; // Needs to be an integer!
