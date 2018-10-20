@@ -2,21 +2,14 @@
   <h1>Pledge Today!</h1>
   <div class="row">
     <div class="col-md-3" display="inline">
-      <%= form_tag donations_path do %>
-        <div id="error_explanation">
-          <% if flash[:error].present? %>
-            <p><%= flash[:error] %></p>
-          <% end %>
-        </div>
-        <article>
-          <%= label_tag(:amount, 'Pledge Amount:') %>
-          <div id="textfield"><%= text_field_tag(:amount) %></div></br>
-        </article>
-        <article>
-          <%= hidden_field_tag(:stripeToken) %>
-        </article>
-        <button class="btn btn-primary" id='donateButton'>Pledge</button>
-      <% end %></br>
+      <ul>
+        <li>Our integrated and verified stripe payment system is designed to
+        allow secure and privacy protected gifts and contributions to be made
+        instantly.</li></br>
+        <li>We are able send an email invoice from our secure and verified square
+        and PayPal business accounts within 24 hours. Please fill out your pledge and
+        we'll get right back to you.</li>
+      </ul>
     </div>
     <div class="col-md-9">
       <p>
@@ -33,6 +26,21 @@
         If you would prefer to use another payment method such as Paypal, Square, or Bitcoin,
         or if you have an inquiry please click <%= link_to "here", new_pledge_path, class: 'btn btn-primary' %>
       </p>
+      <%= form_tag donations_path do %>
+        <div id="error_explanation">
+          <% if flash[:error].present? %>
+            <p><%= flash[:error] %></p>
+          <% end %>
+        </div>
+        <article>
+          <div id="textfield">
+          <%= label_tag(:amount, 'Pledge Amount:', {:style=>'color:#FFFFFF;', :class => "css_class"}) %>
+          <%= text_field_tag(:amount) %>
+          <%= hidden_field_tag(:stripeToken) %>
+          <button class="btn btn-primary" id='donateButton'>Pledge</button>
+          </div>
+        </article>
+      <% end %>
     </div>
   </div>
 </div>
