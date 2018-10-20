@@ -1,33 +1,43 @@
 <div class="contain">
   <h1>Pledge Today!</h1>
-  <p>
-    FuckFent welcomes pledges and contributions of any amount to go towards our
-    design and production of educational materials geared towards practical
-    harm-prevention solutions. Your gift moreover allows us to work with our
-    supplier in order to provide industry leading fentanyl-testing strips, for
-    educational purposes only, to individuals and communities in need, on the ground,
-    through our numerous outreach affiliates. To put it in numbers: at our current
-    scale, five dollars is enough for three pamphlets strips, providing three people,
-    real, living human beings, the opportunity for a more informed shot at life.
-  </p>
-  <%= form_tag donations_path do %>
-    <div id="error_explanation">
-      <% if flash[:error].present? %>
-        <p><%= flash[:error] %></p>
-      <% end %>
+  <div class="row">
+    <div class="col-md-3" display="inline">
+      <%= form_tag donations_path do %>
+        <div id="error_explanation">
+          <% if flash[:error].present? %>
+            <p><%= flash[:error] %></p>
+          <% end %>
+        </div>
+        <article>
+          <%= label_tag(:amount, 'Pledge Amount:') %>
+          <div id="textfield"><%= text_field_tag(:amount) %></div></br>
+        </article>
+        <article>
+          <%= hidden_field_tag(:stripeToken) %>
+        </article>
+        <button class="btn btn-primary" id='donateButton'>Pledge</button>
+      <% end %></br>
     </div>
-    <article>
-      <%= label_tag(:amount, 'Pledge Amount:') %>
-      <div id="textfield"><%= text_field_tag(:amount) %></div></br>
-    </article>
-    <article>
-      <%= hidden_field_tag(:stripeToken) %>
-    </article>
-    <button class="btn btn-primary" id='donateButton'>Pledge</button>
-  <% end %></br>
-  <p>If you would prefer to use another payment method such as Paypal, Square, or Bitcoin,
-   or if you have an inquiry please click <%= link_to "here", new_pledge_path, class: 'btn btn-primary' %></p>
+    <div class="col-md-9">
+      <p>
+        FuckFent welcomes pledges and contributions of any amount to go towards our
+        design and production of educational materials geared towards practical
+        harm-prevention solutions. Your gift moreover allows us to work with our
+        supplier in order to provide industry leading fentanyl-testing strips, for
+        educational purposes only, to individuals and communities in need, on the ground,
+        through our numerous outreach affiliates. To put it in numbers: at our current
+        scale, five dollars is enough for three pamphlets strips, providing three people,
+        real, living human beings, the opportunity for a more informed shot at life.
+      </p>
+      <p>
+        If you would prefer to use another payment method such as Paypal, Square, or Bitcoin,
+        or if you have an inquiry please click <%= link_to "here", new_pledge_path, class: 'btn btn-primary' %>
+      </p>
+    </div>
+  </div>
 </div>
+
+
 <script src="https://checkout.stripe.com/checkout.js"></script>
 <script>
 
