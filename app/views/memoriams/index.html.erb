@@ -1,8 +1,20 @@
-<div class="contain">
-  <h1>In Loving Memory</h1>
-  <div class="pull-right" id= "mem-btn">
-    <%= link_to "Create a memorial", new_memoriam_path, class: 'btn btn-primary' %>
+<div class="row">
+  <div class="contain">
+    <h1>In Loving Memory</h1>
+      <%= link_to "Create a memorial", new_memoriam_path, class: 'btn btn-primary' %>
   </div>
-  <% if @memoriams.count == 0 %>
+  <% if @memoriams == nil %>
+  <div class="contain">
     <h3>There are currently no memorials posted</h3>
+  </div>
+  <% else %>
+    <% @memoriams.each do |mem| %>
+      <div class="col-md-4">
+        <div class="contain">
+          <%= image_tag(mem.image_url(:thumb).to_s) %>
+          <h3><%= link_to mem.name, mem %></h3>
+        </div>
+      </div>
+    <% end %>
   <% end %>
+</div>

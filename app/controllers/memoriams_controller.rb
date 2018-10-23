@@ -23,6 +23,18 @@ class MemoriamsController < ApplicationController
     @memoriam = Memoriam.find(params[:id])
   end
 
+  def destroy
+    @memoriam = Memoriam.find(params[:id])
+
+    if @memoriam.destroy
+      flash[:notice] = "\"#{@memoriam.name}\" was deleted successfully."
+      redirect_to memoriams_path
+    else
+      flash.now[:alert] = "There was an error deleting the memorial."
+      render :show
+    end
+  end
+
   private
 
   def memoriam_params
