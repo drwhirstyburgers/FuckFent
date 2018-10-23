@@ -3,7 +3,7 @@
     <h1>In Loving Memory</h1>
       <%= link_to "Create a memorial", new_memoriam_path, class: 'btn btn-primary' %>
   </div>
-  <% if @memoriams == nil %>
+  <% if @memoriams.count == 0 %>
   <div class="contain">
     <h3>There are currently no memorials posted</h3>
   </div>

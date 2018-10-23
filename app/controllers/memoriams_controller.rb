@@ -12,7 +12,7 @@ class MemoriamsController < ApplicationController
 
     if @memoriam.save
       flash[:notice] = "Your memorial has been posted succesfully, thank you."
-      render :index
+      redirect_to memoriams_path
     else
       flash.now[:alert] = "There was an error, please try again."
       render :new
