@@ -1,5 +1,5 @@
 <div class="row">
-  <div class="contains">
+  <div class="contains-title">
     <div class="title">
     <h1>In Loving Memory</h1>
     <p>Of those whom we loved and lost to the opioid epidemic</p>
@@ -10,14 +10,14 @@
     </div>
   </div>
   <% if @memoriams.count == 0 %>
-  <div class="contains">
+  <div class="contains-title">
     <h3>There are currently no memorials posted. You can be the first
     <%= link_to "here", new_memoriam_path %>.</h3>
   </div>
   <% else %>
     <% @memoriams.each do |mem| %>
       <div class="col-md-4">
-        <div class="contains">
+        <div class="contains-card">
           <%= link_to image_tag(mem.image_url(:thumb).to_s, class: "image"), mem %>
           <h3><%= link_to mem.name, mem %></h3>
           <small><%= mem.born %> to <%= mem.died %></small>

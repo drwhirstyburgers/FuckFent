@@ -6,10 +6,43 @@
   text-align: center;
 }
 
-
-.contains {
-  width: 100%;
+.contains-title{
+  width: 95%;
   margin: 10px auto;
+  align-items:  center;
+  padding: 20px;
+  background: black;
+  background-color: rgba(0,0,0,0.6);
+  text-align: center;
+  color: white;
+  border-radius: 40px;
+  font-family: arial, Helvetica;
+  font-weight: 200;
+  border: 1px solid #ddd;
+}
+
+
+.contains-card {
+  width: 100%;
+  height: 300px;
+  margin: 10px auto;
+  margin-bottom: 40px;
+  align-items:  center;
+  padding: 20px;
+  background: black;
+  background-color: rgba(0,0,0,0.6);
+  text-align: center;
+  color: white;
+  border-radius: 40px;
+  font-family: arial, Helvetica;
+  font-weight: 200;
+  border: 1px solid #ddd;
+}
+
+.contains-show{
+  width: 95%;
+  margin: 10px auto;
+  margin-bottom: 40px;
   align-items:  center;
   padding: 20px;
   background: black;
