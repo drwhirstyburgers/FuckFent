@@ -10,11 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181012221729) do
+ActiveRecord::Schema.define(version: 20181022225908) do
 
   create_table "admins", force: :cascade do |t|
     t.string "name"
     t.string "password_digest"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "memoriams", force: :cascade do |t|
+    t.string "name"
+    t.string "image"
+    t.string "born"
+    t.string "died"
+    t.text "obit"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

@@ -1,0 +1,2 @@
+module MemoriamsHelper
+end

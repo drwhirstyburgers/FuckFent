@@ -1,0 +1,53 @@
+<div class="contain">
+  <h1>Create a Memorial</h1>
+  <div class="row">
+    <div class="col-md-4">
+      <p>Rules for posting:</p>
+      <ul>
+        <li>Please be respectful</li>
+        <li>You must provide a name</li>
+        <li>You must provide a date of birth</li>
+        <li>You must provide a date of death</li>
+        <li>You must provide some kind words</li>
+        <li>If you have any questions please email us at  <%= mail_to "fuckfent@tutanota.com" %></li>
+      </ul>
+    </div>
+    <div class="col-md-8">
+      <%= form_for @memoriam do |f| %>
+           <% if @memoriam.errors.any? %>
+             <div class="alert alert-danger">
+               <h4><%= pluralize(@memoriam.errors.count, "error") %>.</h4>
+               <ul>
+                 <% @memoriam.errors.full_messages.each do |msg| %>
+                   <li><%= msg %></li>
+                 <% end %>
+               </ul>
+             </div>
+           <% end %>
+           <%= form_group_tag(@memoriam.errors[:name]) do %>
+             <%= f.label :name %>
+             <%= f.text_field :name, autofocus: true, class: 'form-control', placeholder: "Enter name" %>
+           <% end %>
+           <div class="form-group">
+             <%= f.label "Date of Birth" %>
+             <%= f.text_field :born, class: 'form-control', placeholder: "Date of birth" %>
+           </div>
+           <div class="form-group">
+             <%= f.label "Date of Death" %>
+             <%= f.text_field :died, class: 'form-control', placeholder: "Date of death" %>
+           </div>
+           <div class="form-group">
+             <%= f.label "Obituary" %>
+             <%= f.text_area :obit, rows: 8, class: 'form-control', placeholder: "Say some kind words" %>
+           </div>
+           <%= form_group_tag(@memoriam.errors[:image]) do %>
+             <%= f.label :image %>
+             <%= f.file_field :image, class: 'form-control', placeholder: "Upload a photo" %>
+           <% end %>
+           <div class="form-group">
+             <%= f.submit "Submit", class: 'btn btn-success' %>
+           </div>
+         <% end %>
+    </div>
+  </div>
+</div>
