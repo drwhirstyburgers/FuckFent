@@ -4,14 +4,15 @@
     <h1>In Loving Memory</h1>
     <p>Of those whom we loved and lost to the opioid epidemic</p>
     <h4>
-      Create a memorial for a loved one 
+      Create a memorial for a loved one
       <%= link_to "here", new_memoriam_path %>
     </h4>
     </div>
   </div>
   <% if @memoriams.count == 0 %>
   <div class="contains">
-    <h3>There are currently no memorials posted</h3>
+    <h3>There are currently no memorials posted. You can be the first
+    <%= link_to "here", new_memoriam_path %>.</h3>
   </div>
   <% else %>
     <% @memoriams.each do |mem| %>
