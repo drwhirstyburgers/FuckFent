@@ -7,7 +7,7 @@
 }
 
 .contains-title{
-  width: 95%;
+  width: 95% auto;
   margin: 10px auto;
   align-items:  center;
   padding: 20px;
@@ -23,7 +23,7 @@
 
 
 .contains-card {
-  width: 100%;
+  width: 100% auto;
   height: 330px;
   margin: 10px auto;
   margin-bottom: 40px;
@@ -40,7 +40,7 @@
 }
 
 .contains-show{
-  width: 95%;
+  width: 95% auto;
   margin: 10px auto;
   margin-bottom: 40px;
   align-items:  center;
@@ -56,6 +56,7 @@
 }
 
 .image {
+  width: auto;
     border: 1px solid #ddd;
     border-radius: 4px;
     padding: 5px;
