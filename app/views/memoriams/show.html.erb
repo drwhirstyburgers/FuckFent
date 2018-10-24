@@ -13,6 +13,12 @@
       the money will go towards our harm prevention efforts by providing
       educational resources to those who remain vulnerable.
     </p>
+    <% if current_admin %>
+      <div class="pull-right">
+        <%= link_to "Delete Memorial", @memoriam, method: :delete, class: 'btn btn-danger', data: {confirm: 'Are you sure you want to delete this memorial?'} %>
+      </div>
+      </br>
+    <% end %>
     <div class="donations">
       <%= form_tag donations_path do %>
         <div id="error_explanation">
